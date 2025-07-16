@@ -4,20 +4,24 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..' 
-                sleep 5
+                echo 'Building...'
+                sleep 10
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-                sleep 5
+                script {
+                    echo 'Running tests...'
+                    sleep 5
+                    // Mark build as UNSTABLE intentionally
+                    currentBuild.result = 'UNSTABLE'
+                }
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
-                sleep 5
+                echo 'Deploying...'
+                sleep 10
             }
         }
     }
