@@ -5,23 +5,28 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                sleep 10
+                sleep 5
             }
         }
+
         stage('Test') {
             steps {
                 script {
                     echo 'Running tests...'
                     sleep 5
-                    // Mark build as UNSTABLE intentionally
-                    currentBuild.result = 'UNSTABLE'
+
+                    // Mark this stage as UNSTABLE and stop further stages
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+                        error('Tests failed. Marking build as UNSTABLE and stopping pipeline.')
+                    }
                 }
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                sleep 10
+                sleep 5
             }
         }
     }
