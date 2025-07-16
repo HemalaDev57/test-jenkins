@@ -1,23 +1,15 @@
 pipeline {
     agent any
 
+    triggers {
+        cron('H * * * *') // Every hour at a hashed minute
+    }
+
     stages {
-        stage('Build') {
+        stage('Hourly Task') {
             steps {
-                echo 'Building..' 
-                sleep 5
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                sleep 5
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-                sleep 5
+                echo "Running hourly job at: ${new Date()}"
+                sleep 20
             }
         }
     }
