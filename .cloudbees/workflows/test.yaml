@@ -7,7 +7,7 @@ on: [workflow_dispatch]
 jobs:
   test:
     steps:
-      - name: Say hello
+      - name: Task 1
         uses: docker://alpine:latest
         run: |
               echo "Doing some job........"
