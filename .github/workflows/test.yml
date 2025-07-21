@@ -1,4 +1,4 @@
-name: Deploy Example
+name: GitHub Sample Workflow
 on: [workflow_dispatch]
 
 jobs:
