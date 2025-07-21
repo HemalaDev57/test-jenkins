@@ -1,0 +1,10 @@
+name: Deploy Example
+on: [workflow_dispatch]
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+              echo "Doing some job........"
+              sleep 10
