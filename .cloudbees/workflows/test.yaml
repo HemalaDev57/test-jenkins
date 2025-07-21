@@ -1,7 +1,9 @@
-apiVersion: automation.cloudbees.io/v1alpha1
+name: CloudBees Sample Workflow
 kind: workflow
-name: My workflow
+apiVersion: automation.cloudbees.io/v1alpha1
+
 on: [workflow_dispatch]
+
 jobs:
   test:
     steps:
